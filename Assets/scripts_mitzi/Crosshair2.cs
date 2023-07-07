@@ -2,31 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crosshair : MonoBehaviour
+public class Crosshair2 : MonoBehaviour
 {
     public float Maxspeed = 5;
     public float acceleration = 1;
     public float raduis = 1;
     public float time_between_shots = 3;
     public float random_offest_number = 0.5f;
+    public float Accuracy = 100;
     Vector3 offset = new Vector2();
+    Rigidbody2D rb;
     Transform target;
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         StartCoroutine(changeOffset());
         StartCoroutine(set_ready());
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        float current_speed = acceleration * Vector2.Distance(transform.position, target.position) * Time.deltaTime;
-        if (current_speed > Maxspeed) current_speed = Maxspeed;
-        transform.position = Vector2.MoveTowards(transform.position, target.position + offset, Time.deltaTime * current_speed);
+        Vector2 Force = PosToForce(target.position+offset);
+        if (Random.Range(0, 100) < Accuracy) Force *= 10;
+        rb.AddForce(Force);
     }
-
+    Vector2 PosToForce(Vector2 pos)
+    {
+        float t = 0.5f;
+        float x = pos.x - transform.position.x;
+        float y = pos.y - transform.position.y;
+        float ax = 2 * (x - rb.velocity.x * t) / Mathf.Pow(t, 2);
+        float ay = 2 * (y - rb.velocity.y * t) / Mathf.Pow(t, 2);
+        if (ay > acceleration) ay = acceleration;
+        if (ax > acceleration) ax = acceleration;
+        if (ay < -acceleration) ay = -acceleration;
+        if (ax < -acceleration) ax = -acceleration;
+        return new Vector2(ax, ay) * rb.mass;
+    }
     IEnumerator changeOffset()
     {
         yield return new WaitForSeconds(0.5f);
@@ -46,5 +61,4 @@ public class Crosshair : MonoBehaviour
         }
         ready_to_shoot = true;
     }
-
 }
