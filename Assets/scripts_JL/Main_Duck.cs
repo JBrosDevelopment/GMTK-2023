@@ -7,6 +7,7 @@ public class Main_Duck : MonoBehaviour
     public static bool Dead;
     public Animator anim;
     GameObject duck;
+    Collider2D collider_;
     Rigidbody2D rb;
     [Range(1f, 10f)]
     public float speed = 10;
@@ -24,17 +25,12 @@ public class Main_Duck : MonoBehaviour
     bool jump_ready = false;
     bool gliding = false;
 
-    IEnumerator Wait(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-    }
-
     private void Awake()
     {
         duck = gameObject;
+        collider_ = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
     }
-
     void Update()
     {
         if (Dead) return;
@@ -118,6 +114,10 @@ public class Main_Duck : MonoBehaviour
     }
     public void Death()
     {
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.angularVelocity = 20;
+        collider_.enabled = false;
+        anim.SetBool("dead", true);
         Dead = true;
     }
 }
