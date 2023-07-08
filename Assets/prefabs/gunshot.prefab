@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6730332281641049690}
   - component: {fileID: 7740158997689429138}
+  - component: {fileID: 546470152386843083}
   m_Layer: 0
   m_Name: gunshot
   m_TagString: Untagged
@@ -84,3 +85,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &546470152386843083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331444020565029295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d9dbea120d25149b82a869ea268554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sr: {fileID: 7740158997689429138}
+  sprites:
+  - {fileID: 1082806448, guid: aef0a11434a5b5d489340881bf344e4e, type: 3}
+  - {fileID: 1604080813, guid: aef0a11434a5b5d489340881bf344e4e, type: 3}
+  - {fileID: -528026526, guid: aef0a11434a5b5d489340881bf344e4e, type: 3}
+  - {fileID: 925875522, guid: aef0a11434a5b5d489340881bf344e4e, type: 3}

@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0.6666667}
   m_FlipX: 0
@@ -104,6 +104,8 @@ MonoBehaviour:
   time_between_shots: 3
   random_offest_number: 0.5
   Accuracy: 100
+  Shoot_Time: 1
+  GunShot: {fileID: 1821185596157635483, guid: b1e8249d33771e34dbbea430152c0feb, type: 3}
 --- !u!50 &8266591070949784150
 Rigidbody2D:
   serializedVersion: 4

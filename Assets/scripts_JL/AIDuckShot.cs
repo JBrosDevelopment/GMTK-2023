@@ -7,8 +7,9 @@ public class AIDuckShot : MonoBehaviour
     // WHEN AI DUCK GETS SHOT, PLAY ANIMATION
     public GameObject gunshot;
 
-    public void Shot(Vector2 pos)
+    public void Shot()
     {
-        Instantiate(gunshot, pos, Quaternion.identity, transform);
+        gunshot.SetActive(true);
     }
+    
 }

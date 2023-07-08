@@ -16,7 +16,7 @@ public class Main_Duck : MonoBehaviour
     public float drag = 10;
     public float _delta = 10000;
     [Tooltip("Shows: \nDeltatime, Jump(true/false), JumpCount, Can Jump")]
-    public bool ShowDebug = false;
+    public bool behind_shiled = false;
     int JumpCount = 0;
     bool isGrounded = true;
     bool Jump;
@@ -33,12 +33,6 @@ public class Main_Duck : MonoBehaviour
         if (Dead) return;
 
         if (JumpCount >= MaxJumps) isGrounded = false;
-        if (ShowDebug)
-        {
-            Debug.Log("Jump: " + Jump);
-            Debug.Log("JumpCount: " + JumpCount);
-            Debug.Log("IsGrounded: " + isGrounded);
-        }
         //can jump
         Jump = (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && JumpCount < MaxJumps;
         if ((Input.GetKeyUp(KeyCode.UpArrow) && !Input.GetKey(KeyCode.W)) || (Input.GetKeyUp(KeyCode.W) && !Input.GetKey(KeyCode.UpArrow)))
@@ -56,13 +50,13 @@ public class Main_Duck : MonoBehaviour
         }
 
         //movement left & right
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             anim.SetBool("run", true);
             transform.localScale = new Vector3(-1, 1, 1);
             rb.velocity = new Vector2(-speed, rb.velocity.y);
         }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             anim.SetBool("run", true);
             transform.localScale = new Vector3(1, 1, 1);
@@ -70,8 +64,8 @@ public class Main_Duck : MonoBehaviour
         }
         else
         {
-            if(isGrounded)
-            rb.velocity = new Vector2(0, rb.velocity.y);
+            if (isGrounded)
+                rb.velocity = new Vector2(0, rb.velocity.y);
             anim.SetBool("run", false);
         }
 

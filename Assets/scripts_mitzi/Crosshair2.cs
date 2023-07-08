@@ -18,6 +18,7 @@ public class Crosshair2 : MonoBehaviour
     Transform target;
     Main_Duck duck;
     GameObject aiDuck;
+    public GameObject GunShot;
     // Start is called before the first frame update
     void Start()
     {
@@ -86,7 +87,7 @@ public class Crosshair2 : MonoBehaviour
                 shooting = true;
             }
         }
-        if (col.CompareTag("bgDuck"))
+        else if (col.CompareTag("bgDuck"))
         {
             onbBgDuck = true;
             if (ready_to_shoot)
@@ -104,7 +105,6 @@ public class Crosshair2 : MonoBehaviour
         if (col.CompareTag("Player")) onDuck = false;
         if (col.CompareTag("bgDuck"))
         {
-            aiDuck = new GameObject();
             onbBgDuck = false;
         }
     }
@@ -112,12 +112,13 @@ public class Crosshair2 : MonoBehaviour
     {
         //play gun sound
         sprite.color = Color.red;
-        if (onDuck)
+        if (onDuck && !onbBgDuck)
             duck.Death();
-        if (onbBgDuck)
+        else if (onbBgDuck)
         {
-            aiDuck.GetComponent<AIDuckShot>().Shot(transform.position);
-        } 
+            aiDuck.GetComponent<AIDuckShot>().Shot();
+        }
+        else Instantiate(GunShot, transform.position, Quaternion.identity);
         shooting = false;
         StartCoroutine(set_ready());
     }
