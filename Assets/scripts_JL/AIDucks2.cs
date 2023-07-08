@@ -16,6 +16,11 @@ public class AIDucks2 : MonoBehaviour
 
     private void Start()
     {
+        GameObject[] ducks = GameObject.FindGameObjectsWithTag("bgDuck");
+        foreach(GameObject d in ducks)
+        {
+            Ducks.Add(d);
+        }
         for (int i = 0; i < Ducks.Count; i++)
         {
             states.Add(1);
@@ -41,9 +46,6 @@ public class AIDucks2 : MonoBehaviour
             Vector2 NewPos = NewPos = new Vector2(duckPos.x + sp * Time.deltaTime, duckPos.y + bob * Time.deltaTime);
             states[i] = state;
             duck.transform.position = NewPos;
-            Debug.Log(state);
-            Debug.Log(NewPos);
-            Debug.Log(sp);
         }
     }
 }

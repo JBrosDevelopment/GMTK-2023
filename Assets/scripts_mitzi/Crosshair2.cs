@@ -86,7 +86,7 @@ public class Crosshair2 : MonoBehaviour
                 shooting = true;
             }
         }
-        if (col.CompareTag("bgDucks"))
+        if (col.CompareTag("bgDuck"))
         {
             onbBgDuck = true;
             if (ready_to_shoot)
