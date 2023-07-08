@@ -9,6 +9,7 @@ public class Crosshair2 : MonoBehaviour
     public float random_offest_number = 0.5f;
     public float Accuracy = 100;
     public float Shoot_Time = 1f;
+    public Animator man;
     //for temp animation
     SpriteRenderer sprite;
     Vector3 offset = new Vector2();
@@ -108,13 +109,16 @@ public class Crosshair2 : MonoBehaviour
     }
     void shoot()
     {
+        man.SetTrigger("shoot");
         //play gun sound
         sprite.color = Color.white;
         if (onDuck && !onbBgDuck)
             duck.Death();
         else if (onbBgDuck)
         {
-            aiDuck.GetComponent<AIDuckShot>().Shot();
+            AIDuckShot s = aiDuck.GetComponent<AIDuckShot>();
+            if (s != null)
+                s.Shot();
         }
         else Instantiate(GunShot, transform.position, Quaternion.identity);
         shooting = false;
