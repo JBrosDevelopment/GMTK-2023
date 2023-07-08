@@ -116,9 +116,12 @@ public class Crosshair2 : MonoBehaviour
             duck.Death();
         else if (onbBgDuck)
         {
-            AIDuckShot s = aiDuck.GetComponent<AIDuckShot>();
-            if (s != null)
-                s.Shot();
+            if(aiDuck != null)
+            {
+                AIDuckShot s = aiDuck.GetComponent<AIDuckShot>();
+                if (s != null)
+                    s.Shot();
+            }
         }
         else Instantiate(GunShot, transform.position, Quaternion.identity);
         shooting = false;
