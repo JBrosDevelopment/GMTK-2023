@@ -10,12 +10,14 @@ public class Crosshair2 : MonoBehaviour
     public float time_between_shots = 3;
     public float random_offest_number = 0.5f;
     public float Accuracy = 100;
+    public float Shoot_Time = 1f;
     //for temp animation
     SpriteRenderer sprite;
     Vector3 offset = new Vector2();
     Rigidbody2D rb;
     Transform target;
     Main_Duck duck;
+    GameObject aiDuck;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +72,7 @@ public class Crosshair2 : MonoBehaviour
     }
     bool shooting;
     bool onDuck;
+    bool onbBgDuck;
     private void OnTriggerStay2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
@@ -78,7 +81,19 @@ public class Crosshair2 : MonoBehaviour
             if (ready_to_shoot)
             {
                 rb.velocity = Vector2.zero;
-                Invoke("shoot", 1);
+                Invoke("shoot", Shoot_Time);
+                ready_to_shoot = false;
+                shooting = true;
+            }
+        }
+        if (col.CompareTag("bgDucks"))
+        {
+            onbBgDuck = true;
+            if (ready_to_shoot)
+            {
+                aiDuck = col.gameObject;
+                rb.velocity = Vector2.zero;
+                Invoke("shoot", Shoot_Time);
                 ready_to_shoot = false;
                 shooting = true;
             }
@@ -87,6 +102,11 @@ public class Crosshair2 : MonoBehaviour
     private void OnTriggerExit2D(Collider2D col)
     {
         if (col.CompareTag("Player")) onDuck = false;
+        if (col.CompareTag("bgDuck"))
+        {
+            aiDuck = new GameObject();
+            onbBgDuck = false;
+        }
     }
     void shoot()
     {
@@ -94,6 +114,10 @@ public class Crosshair2 : MonoBehaviour
         sprite.color = Color.red;
         if (onDuck)
             duck.Death();
+        if (onbBgDuck)
+        {
+            aiDuck.GetComponent<AIDuckShot>().Shot(transform.position);
+        } 
         shooting = false;
         StartCoroutine(set_ready());
     }
