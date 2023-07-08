@@ -10,24 +10,32 @@ public class Crosshair2 : MonoBehaviour
     public float time_between_shots = 3;
     public float random_offest_number = 0.5f;
     public float Accuracy = 100;
+    //for temp animation
+    SpriteRenderer sprite;
     Vector3 offset = new Vector2();
     Rigidbody2D rb;
     Transform target;
+    Main_Duck duck;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         StartCoroutine(changeOffset());
         StartCoroutine(set_ready());
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        duck = target.GetComponent<Main_Duck>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 Force = PosToForce(target.position+offset);
-        if (Random.Range(0, 100) < Accuracy) Force *= 10;
-        rb.AddForce(Force);
+        if (!shooting)
+        {
+            Vector2 Force = PosToForce(target.position + offset);
+            if (Random.Range(0, 100) < Accuracy) Force *= 10;
+            rb.AddForce(Force);
+        }
     }
     Vector2 PosToForce(Vector2 pos)
     {
@@ -54,11 +62,39 @@ public class Crosshair2 : MonoBehaviour
     bool ready_to_shoot = false;
     IEnumerator set_ready()
     {
-        for (int i = 0; i < time_between_shots; i++)
-        {
-            yield return new WaitForSeconds(1);
-            //animation
-        }
+        yield return new WaitForSeconds(time_between_shots);
+        //animation
+        sprite.color = Color.white;
+        yield return new WaitForSeconds(1);
         ready_to_shoot = true;
+    }
+    bool shooting;
+    bool onDuck;
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            onDuck = true;
+            if (ready_to_shoot)
+            {
+                rb.velocity = Vector2.zero;
+                Invoke("shoot", 1);
+                ready_to_shoot = false;
+                shooting = true;
+            }
+        }
+    }
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.CompareTag("Player")) onDuck = false;
+    }
+    void shoot()
+    {
+        //play gun sound
+        sprite.color = Color.red;
+        if (onDuck)
+            duck.Death();
+        shooting = false;
+        StartCoroutine(set_ready());
     }
 }

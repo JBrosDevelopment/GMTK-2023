@@ -6,7 +6,6 @@ public class Main_Duck : MonoBehaviour
 {
     public static bool Dead;
     public Animator anim;
-    GameObject duck;
     Collider2D collider_;
     Rigidbody2D rb;
     [Range(1f, 10f)]
@@ -19,7 +18,6 @@ public class Main_Duck : MonoBehaviour
     [Tooltip("Shows: \nDeltatime, Jump(true/false), JumpCount, Can Jump")]
     public bool ShowDebug = false;
     int JumpCount = 0;
-    float delta;
     bool isGrounded = true;
     bool Jump;
     bool jump_ready = false;
@@ -27,7 +25,6 @@ public class Main_Duck : MonoBehaviour
 
     private void Awake()
     {
-        duck = gameObject;
         collider_ = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -35,11 +32,9 @@ public class Main_Duck : MonoBehaviour
     {
         if (Dead) return;
 
-        delta = Time.deltaTime * _delta;
         if (JumpCount >= MaxJumps) isGrounded = false;
         if (ShowDebug)
         {
-            Debug.Log("Delta: " + delta);
             Debug.Log("Jump: " + Jump);
             Debug.Log("JumpCount: " + JumpCount);
             Debug.Log("IsGrounded: " + isGrounded);

@@ -215,6 +215,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1181597254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 86387730937352812, guid: 11b126161c926fb4eb0e00d02fcc201b, type: 3}
+  m_PrefabInstance: {fileID: 4449131819135726250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1181597259
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181597254}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1504524283
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,8 +619,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8042283152145434747, guid: 11b126161c926fb4eb0e00d02fcc201b, type: 3}
+      propertyPath: acceleration
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 86387730937352812, guid: 11b126161c926fb4eb0e00d02fcc201b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1181597259}
   m_SourcePrefab: {fileID: 100100000, guid: 11b126161c926fb4eb0e00d02fcc201b, type: 3}
