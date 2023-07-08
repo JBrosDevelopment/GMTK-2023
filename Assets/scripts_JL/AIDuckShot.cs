@@ -6,10 +6,20 @@ public class AIDuckShot : MonoBehaviour
 {
     // WHEN AI DUCK GETS SHOT, PLAY ANIMATION
     public GameObject gunshot;
+    public Animator animator;
+    public Collider2D col;
+    public float raise;
 
     public void Shot()
     {
-        gunshot.SetActive(true);
+        StartCoroutine(fold());
     }
-    
+    IEnumerator fold()
+    {
+        col.enabled = false;
+        animator.SetBool("hit", true);
+        yield return new WaitForSeconds(raise);
+        animator.SetBool("hit", false);
+        col.enabled = true;
+    }
 }

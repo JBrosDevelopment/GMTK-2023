@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Crosshair2 : MonoBehaviour
 {
-    public float Maxspeed = 5;
     public float acceleration = 1;
-    public float raduis = 1;
     public float time_between_shots = 3;
     public float random_offest_number = 0.5f;
     public float Accuracy = 100;
@@ -67,7 +65,7 @@ public class Crosshair2 : MonoBehaviour
     {
         yield return new WaitForSeconds(time_between_shots);
         //animation
-        sprite.color = Color.white;
+        sprite.color = Color.red;
         yield return new WaitForSeconds(1);
         ready_to_shoot = true;
     }
@@ -111,7 +109,7 @@ public class Crosshair2 : MonoBehaviour
     void shoot()
     {
         //play gun sound
-        sprite.color = Color.red;
+        sprite.color = Color.white;
         if (onDuck && !onbBgDuck)
             duck.Death();
         else if (onbBgDuck)

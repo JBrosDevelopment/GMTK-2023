@@ -144,7 +144,7 @@ TextureImporter:
         width: 185
         height: 162
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,6 +152,174 @@ TextureImporter:
       bones: []
       spriteID: c6d8d4b75d55c9647a6684cb70807f09
       internalID: 1884670221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reload
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 199
+        width: 195
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa804cd8aef27f24aad42232f2cdbcad
+      internalID: 2014224693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reload 2
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 198
+        width: 194
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61837ce9fe281ee42b1fd00fc049ea5f
+      internalID: 203487055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reload 3
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 199
+        width: 204
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72c668e9ac4064b478176f8fb2940ca6
+      internalID: 1453158297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reload 4
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 199
+        width: 204
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6946340d0889c1041ba6e706b56912b1
+      internalID: 942721808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shoot
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 193
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00303c80f8ad74148a511cc4a5ee6732
+      internalID: 1254523573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shoot 2
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 0
+        width: 198
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 858006bcc4fffbf44b2ce901029cdfda
+      internalID: -1787790096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shoot 3
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 0
+        width: 205
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91783122fe5908e439b1980d835936ee
+      internalID: -1704243899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shoot 4
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 0
+        width: 204
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b678244a2667e2d4cafeacbf1b38f49a
+      internalID: -176434832
       vertices: []
       indices: 
       edges: []
@@ -168,6 +336,14 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       CowboySprite_0: 1884670221
+      reload: 2014224693
+      reload 2: 203487055
+      reload 3: 1453158297
+      reload 4: 1453158297
+      shoot: 1254523573
+      shoot 2: -1787790096
+      shoot 3: -1704243899
+      shoot 4: -176434832
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
