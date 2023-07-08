@@ -5,28 +5,24 @@ using UnityEngine;
 public class Main_Duck : MonoBehaviour
 {
     public static bool Dead;
+    public Animator anim;
     GameObject duck;
     Rigidbody2D rb;
-    [Range(0.1f, 10f)]
-    public float _speed = 10;
-    [Range(0.1f, 10f)]
-    public float _JumpSpeed = 10;
+    [Range(1f, 10f)]
+    public float speed = 10;
+    [Range(1f, 1000f)]
+    public float JumpSpeed = 10;
     public int MaxJumps = 2;
-    public float JumpCooldown = 0.2f;
-    public float ThirdJumpDrag = 10;
+    public float drag = 10;
     public float _delta = 10000;
     [Tooltip("Shows: \nDeltatime, Jump(true/false), JumpCount, Can Jump")]
     public bool ShowDebug = false;
-    float JumpSpeed;
     int JumpCount = 0;
-    float speed;
     float delta;
     bool isGrounded = true;
-    float XInput;
     bool Jump;
-    bool isJumping = false;
-    float jumpTimer = 0f;
-    bool dragging = false;
+    bool jump_ready = false;
+    bool gliding = false;
 
     IEnumerator Wait(float seconds)
     {
@@ -44,8 +40,6 @@ public class Main_Duck : MonoBehaviour
         if (Dead) return;
 
         delta = Time.deltaTime * _delta;
-        speed = _speed / 5;
-        JumpSpeed = _JumpSpeed * 10;
         if (JumpCount >= MaxJumps) isGrounded = false;
         if (ShowDebug)
         {
@@ -54,60 +48,74 @@ public class Main_Duck : MonoBehaviour
             Debug.Log("JumpCount: " + JumpCount);
             Debug.Log("IsGrounded: " + isGrounded);
         }
-        XInput = Input.GetAxis("Horizontal");
-        Jump = (Input.GetAxis("Jump") > 0 || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && isGrounded ? true : false;
-    }
-
-    void FixedUpdate()
-    {
-        if (Dead) return;
-
-        rb.rotation = 0;
-        rb.velocity = new Vector2(XInput * speed * delta, rb.velocity.y);
-
-        if(XInput == 0 && dragging)
+        //can jump
+        Jump = (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && JumpCount < MaxJumps;
+        if ((Input.GetKeyUp(KeyCode.UpArrow) && !Input.GetKey(KeyCode.W)) || (Input.GetKeyUp(KeyCode.W) && !Input.GetKey(KeyCode.UpArrow)))
         {
+            jump_ready = true;
+        }
+
+        //jump
+        if (Jump && jump_ready)
+        {
+            jump_ready = false;
+            JumpCount++;
+            Jump = true;
+            rb.AddForce(Vector2.up * JumpSpeed);
+        }
+
+        //movement left & right
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.RightArrow))
+        {
+            anim.SetBool("run", true);
+            transform.localScale = new Vector3(-1, 1, 1);
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
+        }
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            anim.SetBool("run", true);
+            transform.localScale = new Vector3(1, 1, 1);
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+        }
+        else
+        {
+            if(isGrounded)
+            rb.velocity = new Vector2(0, rb.velocity.y);
+            anim.SetBool("run", false);
+        }
+
+        //glide
+        if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && !jump_ready)
+        {
+            gliding = true;
+            rb.drag = drag;
+        }
+        else
+        {
+            gliding = false;
             rb.drag = 0;
         }
-        else if (XInput != 0 && dragging)
-        {
-            rb.drag = ThirdJumpDrag;
-        }
-
-        if (isJumping && Time.time >= jumpTimer + JumpCooldown)
-        {
-            isJumping = false;
-        }
-
-        if (Jump && !isJumping)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            JumpCount++;
-            Jump = false;
-            isJumping = true;
-            jumpTimer = Time.time;
-            rb.AddForce(transform.up * JumpSpeed * delta);
-        }
-        else if(JumpCount >= MaxJumps && (Input.GetAxis("Jump") > 0 || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && Time.time >= jumpTimer)
-        {
-            dragging = true;
-            isJumping = false;
-            Jump = false;
-            jumpTimer = Time.time;
-            rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.drag = ThirdJumpDrag;
-        }
+        anim.SetBool("jump", Jump);
+        anim.SetBool("grounded", isGrounded);
+        anim.SetBool("glide", gliding);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        dragging = false;
-        JumpCount = 0;
-        isGrounded = true;
-        isJumping = false;
-        rb.drag = 0;
+        if (col.gameObject.CompareTag("ground"))
+        {
+            gliding = false;
+            JumpCount = 0;
+            isGrounded = true;
+            jump_ready = true;
+            rb.drag = 0;
+        }
     }
-
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("ground"))
+            isGrounded = false;
+    }
     public void Death()
     {
         Dead = true;
