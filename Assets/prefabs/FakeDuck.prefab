@@ -101,9 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1dc3805af98fd945aee6d36f8631d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flying: 0
   gunshot: {fileID: 6582686936557202275}
   animator: {fileID: 2781911745394462789}
   sprite: {fileID: 7484913336186404782}
+  goldWorth: 50
+  NormalWorth: 5
   col: {fileID: -4170705282334929085}
   raise: 3
 --- !u!50 &-7643506336238194582

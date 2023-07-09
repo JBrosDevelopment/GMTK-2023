@@ -110,6 +110,7 @@ public class Crosshair2 : MonoBehaviour
             if (ready_to_shoot)
             {
                 rb.velocity = Vector2.zero;
+                man.SetTrigger("shoot");
                 Invoke("shoot", Shoot_Time);
                 ready_to_shoot = false;
                 shooting = true;
@@ -130,7 +131,6 @@ public class Crosshair2 : MonoBehaviour
     }
     void shoot()
     {
-        man.SetTrigger("shoot");
         //play gun sound
         sfx.Play("shoot");
         render.sprite = big;
@@ -138,7 +138,7 @@ public class Crosshair2 : MonoBehaviour
             duck.Death();
         else if (onbBgDuck)
         {
-            if(aiDuck != null)
+            if (aiDuck != null)
             {
                 AIDuckShot s = aiDuck.GetComponent<AIDuckShot>();
                 if (s != null)
@@ -147,16 +147,11 @@ public class Crosshair2 : MonoBehaviour
         }
         else if (onTarget)
         {
-            if(Tgt != null)
-            {
-                TargetManager t = Tgt.GetComponent<TargetManager>();
-                if (t != null)
-                    t.Shot();
-            }
+            TargetManager t = Tgt.GetComponent<TargetManager>();
+            t.Shot();
         }
         else Instantiate(GunShot, transform.position, Quaternion.identity);
         aiDuck = null;
-        Tgt = null;
         onTarget = false;
         onbBgDuck = false;
         shooting = false;

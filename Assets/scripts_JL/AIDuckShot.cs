@@ -5,17 +5,23 @@ using UnityEngine;
 public class AIDuckShot : MonoBehaviour
 {
     // WHEN AI DUCK GETS SHOT, PLAY ANIMATION
+    public bool flying;
     public GameObject gunshot;
     public Animator animator;
     public SpriteRenderer sprite;
+    public int goldWorth = 50;
+    public int NormalWorth = 5;
     int pointsWorth = 5;
     public Collider2D col;
     public float raise;
-
+    private void Start()
+    {
+        pointsWorth = NormalWorth;
+    }
     public void ChangeGold()
     {
         sprite.color = Color.yellow;
-        pointsWorth = 50;
+        pointsWorth = goldWorth;
     }
     public void Shot()
     {
@@ -27,10 +33,23 @@ public class AIDuckShot : MonoBehaviour
     {
         col.enabled = false;
         animator.SetBool("hit", true);
-        yield return new WaitForSeconds(raise);
-        sprite.color = Color.white;
-        pointsWorth = 5;
-        animator.SetBool("hit", false);
-        col.enabled = true;
+        for (int i = 0; i < 6; i++)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z);
+            yield return new WaitForSeconds(0.1f);
+        }
+        if (!flying)
+        {
+            yield return new WaitForSeconds(raise);
+            for (int i = 0; i < 6; i++)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y + 0.25f, transform.position.z);
+                yield return new WaitForSeconds(0.1f);
+            }
+            col.enabled = true;
+            sprite.color = Color.white;
+            pointsWorth = NormalWorth;
+            animator.SetBool("hit", false);
+        }
     }
 }

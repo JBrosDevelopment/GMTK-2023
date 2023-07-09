@@ -47,7 +47,6 @@ MonoBehaviour:
   RandomTimeSpanMin: 3
   RandomTimeSpanMax: 5
   Target: {fileID: 7986800717366135533, guid: b8143eed82a19e145aa76cbcb6d8b512, type: 3}
-  Point: {fileID: 948664860933514373, guid: bdb3000f9ec97cd4283f71eda9660f16, type: 3}
-  Top: 2.25
+  Top: 2
   Left: -9
   Right: 1.75

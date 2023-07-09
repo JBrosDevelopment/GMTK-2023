@@ -21,9 +21,10 @@ public class TargetManager : MonoBehaviour
     }
     IEnumerator waitDeath()
     {
-        yield return new WaitForSeconds(1f);
-        PointsManager pm = GameObject.FindGameObjectWithTag("PointsManager").GetComponent<PointsManager>();
-        pm.AddPoints(10);
+        yield return new WaitForSeconds(2f);
+        //changed to AIDuckShot
+        //PointsManager pm = GameObject.FindGameObjectWithTag("PointsManager").GetComponent<PointsManager>();
+        //pm.AddPoints(10);
         Destroy(t);
         t = null;
         shot = true;
@@ -45,8 +46,8 @@ public class TargetManager : MonoBehaviour
     public void Shot()
     {
         shot = false;
-        Animator animator = t.GetComponent<Animator>();
-        animator.Play("Hit", 0, 0f);
+        AIDuckShot a = t.GetComponent<AIDuckShot>();
+        a.Shot();
         StartCoroutine(waitDeath());
     }
 }
