@@ -72,6 +72,12 @@ public class menu : MonoBehaviour
         }
         SubMenus[menu].SetActive(true);
     }
+    public void LoadGame()
+    {
+        Time.timeScale = 1;
+        loadingSc.SetActive(true);
+        SceneManager.LoadScene("test");
+    }
     public void Music()
     {
         float x = sliderM.value;
