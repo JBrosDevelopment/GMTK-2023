@@ -19,8 +19,8 @@ public class ProjectileCollision : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
-            //collision.gameObject.GetComponent<Main_Duck>().Death();
+            //Destroy(gameObject);
+            collision.gameObject.GetComponent<Main_Duck>().Death();
         }
         if (collision.gameObject.tag == "side" && waited)
         {

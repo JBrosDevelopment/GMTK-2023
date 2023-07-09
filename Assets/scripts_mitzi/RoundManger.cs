@@ -15,6 +15,9 @@ public class RoundManger : MonoBehaviour
     public AudioClip LOST;
     public AudioClip NEXTROUND;
     bool lost = false;
+    public GameObject end;
+    public GameObject win;
+    public GameObject lose;
 
     void Start()
     {
@@ -54,6 +57,7 @@ public class RoundManger : MonoBehaviour
         source.clip = WON;
         source.Play();
         Text.text = "YOU WON!";
+        done();
     }
     public void Lost()
     {
@@ -62,5 +66,19 @@ public class RoundManger : MonoBehaviour
         source.Stop();
         source.clip = LOST;
         source.Play();
+        done();
+    }
+    void done()
+    {
+        Time.timeScale = 0;
+        end.SetActive(true);
+        if(lost)
+        {
+            lose.SetActive(true);
+        }
+        else
+        {
+            win.SetActive(true);
+        }
     }
 }
