@@ -11,6 +11,7 @@ public class RoundManger : MonoBehaviour
     public GameObject MusicPlayer;
     AudioSource source;
     public Text Text;
+    public Text poi;
     public AudioClip WON;
     public AudioClip LOST;
     public AudioClip NEXTROUND;
@@ -70,6 +71,7 @@ public class RoundManger : MonoBehaviour
     }
     void done()
     {
+        poi.text = "Score: " + GameObject.FindGameObjectWithTag("PointsManager").GetComponent<PointsManager>().Points.ToString();
         Time.timeScale = 0;
         end.SetActive(true);
         if(lost)
