@@ -71,7 +71,14 @@ public class RoundManger : MonoBehaviour
     }
     void done()
     {
-        poi.text = "Score: " + GameObject.FindGameObjectWithTag("PointsManager").GetComponent<PointsManager>().Points.ToString();
+        try
+        {
+            poi.text = "Score: " + GameObject.FindGameObjectWithTag("PointsManager").GetComponent<PointsManager>().Points.ToString();
+        }
+        catch
+        {
+            poi.text = "Points: ";
+        }
         Time.timeScale = 0;
         end.SetActive(true);
         if(lost)

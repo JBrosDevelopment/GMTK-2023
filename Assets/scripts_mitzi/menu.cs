@@ -55,7 +55,7 @@ public class menu : MonoBehaviour
     {
         Time.timeScale = 1;
         loadingSc.SetActive(true);
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Title Screen");
     }
     public void Restart()
     {
