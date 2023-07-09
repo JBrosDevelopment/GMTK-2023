@@ -7,8 +7,14 @@ public class PointsManager : MonoBehaviour
 {
     public int Points { get; set; }
     public Text points;
+    public SFXController sfx;
     private void Update()
     {
         points.text = $"Points: {Points}";
+    }
+    public void AddPoints(int points)
+    {
+        sfx.Play("points");
+        Points += points;
     }
 }

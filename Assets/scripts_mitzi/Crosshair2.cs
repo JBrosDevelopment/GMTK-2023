@@ -13,8 +13,7 @@ public class Crosshair2 : MonoBehaviour
     SpriteRenderer render;
     public Sprite big;
     public Sprite small;
-    //for temp animation
-    SpriteRenderer sprite;
+    public SFXController sfx;
     Vector3 offset = new Vector2();
     Rigidbody2D rb;
     Transform target;
@@ -28,7 +27,6 @@ public class Crosshair2 : MonoBehaviour
         render = GetComponent<SpriteRenderer>();
         Tgt = GameObject.FindGameObjectWithTag("TargetManager");
         rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
         StartCoroutine(changeOffset());
         StartCoroutine(set_ready());
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -73,6 +71,7 @@ public class Crosshair2 : MonoBehaviour
         yield return new WaitForSeconds(time_between_shots);
         //animation
         render.sprite = small;
+        sfx.Play("reload");
         yield return new WaitForSeconds(1);
         ready_to_shoot = true;
     }
@@ -133,6 +132,7 @@ public class Crosshair2 : MonoBehaviour
     {
         man.SetTrigger("shoot");
         //play gun sound
+        sfx.Play("shoot");
         render.sprite = big;
         if (onDuck && !onbBgDuck)
             duck.Death();
@@ -155,6 +155,10 @@ public class Crosshair2 : MonoBehaviour
             }
         }
         else Instantiate(GunShot, transform.position, Quaternion.identity);
+        aiDuck = null;
+        Tgt = null;
+        onTarget = false;
+        onbBgDuck = false;
         shooting = false;
         StartCoroutine(set_ready());
     }

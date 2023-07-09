@@ -23,12 +23,11 @@ public class TargetManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         PointsManager pm = GameObject.FindGameObjectWithTag("PointsManager").GetComponent<PointsManager>();
-        pm.Points++;
+        pm.AddPoints(10);
         Destroy(t);
         t = null;
         shot = true;
     }
-
     void Update()
     {
         if (shot)

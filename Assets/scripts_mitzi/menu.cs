@@ -17,7 +17,7 @@ public class menu : MonoBehaviour
     public bool SubMenu;
     private void Update()
     {
-        if (PauseMenu && Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) Pause();
+        if (PauseMenu && (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))) Pause();
     }
     bool pause = false;
     public void Pause()
@@ -47,8 +47,8 @@ public class menu : MonoBehaviour
             else x = PlayerPrefs.GetFloat("sound");
             sliderS.value = x;
             sliderM.value = y;
-            music.SetFloat("volume", y);
-            sound.SetFloat("volume", x);
+            Music();
+            Sound();
         }
     }
     public void LoadMainMenu()
@@ -75,17 +75,19 @@ public class menu : MonoBehaviour
     public void Music()
     {
         float x = sliderM.value;
+        PlayerPrefs.SetFloat("music", x);
+        x = Mathf.Log10(x) * 20;
         music.SetFloat("volume", x);
         if (x < -50) music.SetFloat("volume", -50);
-        PlayerPrefs.SetFloat("music", x);
         PlayerPrefs.Save();
     }
     public void Sound()
     {
         float x = sliderS.value;
+        PlayerPrefs.SetFloat("sound", x);
+        x = Mathf.Log10(x) * 20;
         sound.SetFloat("volume", x);
         if (x< -50) sound.SetFloat("volume", -50);
-        PlayerPrefs.SetFloat("sound", x);
         PlayerPrefs.Save();
     }
 }

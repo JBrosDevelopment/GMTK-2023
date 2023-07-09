@@ -6,6 +6,7 @@ public class Main_Duck : MonoBehaviour
 {
     public bool Dead;
     public Animator anim;
+    public SFXController sfx;
     Collider2D collider_;
     Rigidbody2D rb;
     [Range(1f, 10f)]
@@ -16,15 +17,15 @@ public class Main_Duck : MonoBehaviour
     public float drag = 10;
     public float _delta = 10000;
     [Tooltip("Shows: \nDeltatime, Jump(true/false), JumpCount, Can Jump")]
-    public bool behind_shiled = false;
     int JumpCount = 0;
     bool isGrounded = true;
     bool Jump;
     bool jump_ready = false;
     bool gliding = false;
-
+    AudioSource glide;
     private void Awake()
     {
+        glide = sfx.GetSFX("glide");
         collider_ = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -43,6 +44,7 @@ public class Main_Duck : MonoBehaviour
         //jump
         if (Jump && jump_ready)
         {
+            sfx.Play("jump");
             jump_ready = false;
             JumpCount++;
             Jump = true;
@@ -72,6 +74,7 @@ public class Main_Duck : MonoBehaviour
         //glide
         if ((Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) && !jump_ready)
         {
+            if (!glide.isPlaying) glide.Play();
             gliding = true;
             rb.drag = drag;
         }
@@ -104,6 +107,7 @@ public class Main_Duck : MonoBehaviour
     public void Death()
     {
         rb.drag = 0;
+        sfx.Play("death");
         GameObject go = GameObject.FindGameObjectWithTag("RoundManager");
         go.GetComponent<RoundManger>().Restart();
         rb.constraints = RigidbodyConstraints2D.None;

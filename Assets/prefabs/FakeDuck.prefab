@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunshot: {fileID: 6582686936557202275}
   animator: {fileID: 2781911745394462789}
+  sprite: {fileID: 7484913336186404782}
   col: {fileID: -4170705282334929085}
   raise: 3
 --- !u!50 &-7643506336238194582
@@ -164,7 +165,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.52549493}
+  m_Offset: {x: 0.008474827, y: 0.5509205}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -175,7 +176,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.68, y: 0.69901013}
+  m_Size: {x: 1.13766, y: 1.0549684}
   m_EdgeRadius: 0
 --- !u!95 &2781911745394462789
 Animator:
