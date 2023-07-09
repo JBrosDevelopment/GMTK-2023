@@ -124,6 +124,8 @@ public class Crosshair2 : MonoBehaviour
             }
         }
         else Instantiate(GunShot, transform.position, Quaternion.identity);
+        onbBgDuck = false;
+        aiDuck = null;
         shooting = false;
         StartCoroutine(set_ready());
     }
