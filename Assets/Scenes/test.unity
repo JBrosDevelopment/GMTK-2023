@@ -872,7 +872,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1399,8 +1399,8 @@ RectTransform:
   m_Father: {fileID: 162313761}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1669,8 +1669,8 @@ RectTransform:
   m_Father: {fileID: 1797170100}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2722,7 +2722,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3466,11 +3466,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 7107992716608375023, guid: a00c4aa46c2666b4dbaed91d95e9c80c, type: 3}
   rounds:
-  - man: {fileID: 2036158441953006271, guid: 5c4ee51bcf88140488a68f645fdb4596, type: 3}
+  - Music: {fileID: 0}
+    man: {fileID: 2036158441953006271, guid: 5c4ee51bcf88140488a68f645fdb4596, type: 3}
     time: 30
-  - man: {fileID: 235609407545182754, guid: bc443f84366c6dd4e916550e0db1a77e, type: 3}
+  - Music: {fileID: 0}
+    man: {fileID: 235609407545182754, guid: bc443f84366c6dd4e916550e0db1a77e, type: 3}
     time: 30
   timer: {fileID: 1491124174}
+  MusicPlayer: {fileID: 0}
+  Text: {fileID: 0}
+  WON: {fileID: 0}
+  LOST: {fileID: 0}
+  NEXTROUND: {fileID: 0}
+  end: {fileID: 0}
+  win: {fileID: 0}
+  lose: {fileID: 0}
 --- !u!4 &1581798343
 Transform:
   m_ObjectHideFlags: 0
