@@ -7,15 +7,7 @@ AnimationClip:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: shoot
-<<<<<<< Updated upstream
-  serializedVersion: 7
-=======
-<<<<<<< HEAD
   serializedVersion: 6
-=======
-  serializedVersion: 7
->>>>>>> feabeec35873de18f42a6e9cd1ef5b91cb7afbbe
->>>>>>> Stashed changes
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -26,46 +18,19 @@ AnimationClip:
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves:
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
   - curve:
     - time: 0
-      value: {fileID: 213592229, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
+      value: {fileID: 1310230760, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
+    - time: 0.11666667
+      value: {fileID: 144773658, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
     - time: 0.21666667
-      value: {fileID: -1065513099, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-    - time: 0.43333334
-      value: {fileID: -576614148, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-    - time: 0.6666667
-      value: {fileID: -266629712, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-=======
->>>>>>> Stashed changes
-  - serializedVersion: 2
-    curve:
-    - time: 0
-      value: {fileID: -2038748237, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-    - time: 0.15
-      value: {fileID: 1092382502, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-    - time: 0.31666666
-      value: {fileID: 471546468, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-    - time: 0.48333332
-      value: {fileID: 1049785219, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-<<<<<<< Updated upstream
-=======
->>>>>>> feabeec35873de18f42a6e9cd1ef5b91cb7afbbe
->>>>>>> Stashed changes
+      value: {fileID: -278450466, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
+    - time: 0.3
+      value: {fileID: -220347554, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-<<<<<<< Updated upstream
-    flags: 2
-=======
-<<<<<<< HEAD
-=======
-    flags: 2
->>>>>>> feabeec35873de18f42a6e9cd1ef5b91cb7afbbe
->>>>>>> Stashed changes
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -80,41 +45,17 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
     pptrCurveMapping:
-    - {fileID: 213592229, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-    - {fileID: -1065513099, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-    - {fileID: -576614148, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-    - {fileID: -266629712, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-=======
->>>>>>> Stashed changes
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
-    pptrCurveMapping:
-    - {fileID: -2038748237, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-    - {fileID: 1092382502, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-    - {fileID: 471546468, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-    - {fileID: 1049785219, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
-<<<<<<< Updated upstream
-=======
->>>>>>> feabeec35873de18f42a6e9cd1ef5b91cb7afbbe
->>>>>>> Stashed changes
+    - {fileID: 1310230760, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
+    - {fileID: 144773658, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
+    - {fileID: -278450466, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
+    - {fileID: -220347554, guid: c412a7c078acf6e4a9f200275c7c2bd3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-<<<<<<< Updated upstream
-    m_StopTime: 0.5
-=======
-<<<<<<< HEAD
-    m_StopTime: 0.68333334
-=======
-    m_StopTime: 0.5
->>>>>>> feabeec35873de18f42a6e9cd1ef5b91cb7afbbe
->>>>>>> Stashed changes
+    m_StopTime: 0.3166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

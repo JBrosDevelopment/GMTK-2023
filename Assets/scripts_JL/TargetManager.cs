@@ -7,7 +7,6 @@ public class TargetManager : MonoBehaviour
     public float RandomTimeSpanMin;
     public float RandomTimeSpanMax;
     public GameObject Target;
-    public GameObject Point;
     public float Top;
     public float Left;
     public float Right;
@@ -23,7 +22,7 @@ public class TargetManager : MonoBehaviour
     IEnumerator waitDeath()
     {
         yield return new WaitForSeconds(1f);
-        PointsManager pm = Point.GetComponent<PointsManager>();
+        PointsManager pm = GameObject.FindGameObjectWithTag("PointsManager").GetComponent<PointsManager>();
         pm.Points++;
         Destroy(t);
         t = null;

@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class RoundManger : MonoBehaviour
 {
+    public GameObject Player;
     public round[] rounds;
     public Text timer;
 
     void Start()
     {
+        Instantiate(Player);
         StartCoroutine(waves());
     }
     IEnumerator waves()
@@ -25,5 +27,25 @@ public class RoundManger : MonoBehaviour
             Destroy(man);
             yield return new WaitForSeconds(1f);
         }
+    }
+    public void Restart()
+    {
+        return;
+        Destroy(Player);
+        foreach(round r in rounds)
+        {
+            Destroy(r.man);
+        }
+
+        StopAllCoroutines();
+        StartCoroutine(restart());
+    }
+    IEnumerator restart()
+    {
+        PointsManager pm = GameObject.FindGameObjectWithTag("PointsManager").GetComponent<PointsManager>();
+        pm.Points = 0;
+        yield return new WaitForSeconds(1);
+        Instantiate(Player);
+        StartCoroutine(waves());
     }
 }

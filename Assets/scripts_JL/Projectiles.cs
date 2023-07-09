@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Projectiles : MonoBehaviour
@@ -16,6 +17,7 @@ public class Projectiles : MonoBehaviour
     public Vector2 RightWarning;
     public float random = 50;
     GameObject warn;
+    [HideInInspector] public GameObject[] allprojectiles;
 
     bool left;
     bool haswaited = false;
@@ -50,6 +52,7 @@ public class Projectiles : MonoBehaviour
             float range = Random.Range(Force.y - random, Force.y + random);
             int randomProjectile = Random.Range(0, projectiles.Length);
             GameObject project = Instantiate(projectiles[randomProjectile], transform);
+            allprojectiles.Append(project);
             project.transform.position = left ? LeftPosition : RightPosition;
             if (left)
             {

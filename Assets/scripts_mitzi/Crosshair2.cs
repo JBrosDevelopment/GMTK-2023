@@ -10,6 +10,9 @@ public class Crosshair2 : MonoBehaviour
     public float Accuracy = 100;
     public float Shoot_Time = 1f;
     public Animator man;
+    SpriteRenderer render;
+    public Sprite big;
+    public Sprite small;
     //for temp animation
     SpriteRenderer sprite;
     Vector3 offset = new Vector2();
@@ -22,6 +25,7 @@ public class Crosshair2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        render = GetComponent<SpriteRenderer>();
         Tgt = GameObject.FindGameObjectWithTag("TargetManager");
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -68,7 +72,7 @@ public class Crosshair2 : MonoBehaviour
     {
         yield return new WaitForSeconds(time_between_shots);
         //animation
-        sprite.color = Color.red;
+        render.sprite = small;
         yield return new WaitForSeconds(1);
         ready_to_shoot = true;
     }
@@ -129,7 +133,7 @@ public class Crosshair2 : MonoBehaviour
     {
         man.SetTrigger("shoot");
         //play gun sound
-        sprite.color = Color.white;
+        render.sprite = big;
         if (onDuck && !onbBgDuck)
             duck.Death();
         else if (onbBgDuck)

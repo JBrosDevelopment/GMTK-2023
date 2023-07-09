@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Main_Duck : MonoBehaviour
 {
-    public static bool Dead;
+    public bool Dead;
     public Animator anim;
     Collider2D collider_;
     Rigidbody2D rb;
@@ -104,6 +104,8 @@ public class Main_Duck : MonoBehaviour
     public void Death()
     {
         rb.drag = 0;
+        GameObject go = GameObject.FindGameObjectWithTag("RoundManager");
+        go.GetComponent<RoundManger>().Restart();
         rb.constraints = RigidbodyConstraints2D.None;
         rb.angularVelocity = 20;
         collider_.enabled = false;
