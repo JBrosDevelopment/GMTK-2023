@@ -14,6 +14,7 @@ public class RoundManger : MonoBehaviour
     public AudioClip WON;
     public AudioClip LOST;
     public AudioClip NEXTROUND;
+    bool lost = false;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class RoundManger : MonoBehaviour
         int j = 0;
         foreach(round r in rounds)
         {
+            if (lost) yield return null;
             j++;
             Text.text = "READY?";
             yield return new WaitForSeconds(1f);
@@ -55,7 +57,8 @@ public class RoundManger : MonoBehaviour
     }
     public void Lost()
     {
-        Text.text = "You Lost";
+        lost = true;
+        Text.text = "YOU LOST";
         source.Stop();
         source.clip = LOST;
         source.Play();

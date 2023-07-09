@@ -35,7 +35,7 @@ public class AIDuckShot : MonoBehaviour
         animator.SetBool("hit", true);
         for (int i = 0; i < 6; i++)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
             yield return new WaitForSeconds(0.1f);
         }
         if (!flying)
