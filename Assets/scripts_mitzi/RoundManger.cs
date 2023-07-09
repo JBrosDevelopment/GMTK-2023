@@ -23,6 +23,7 @@ public class RoundManger : MonoBehaviour
                 timer.text = (r.time - i).ToString();
             }
             Destroy(man);
+            yield return new WaitForSeconds(1f);
         }
     }
 }

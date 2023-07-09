@@ -103,6 +103,7 @@ public class Main_Duck : MonoBehaviour
     }
     public void Death()
     {
+        rb.drag = 0;
         rb.constraints = RigidbodyConstraints2D.None;
         rb.angularVelocity = 20;
         collider_.enabled = false;

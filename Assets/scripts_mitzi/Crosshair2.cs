@@ -17,10 +17,12 @@ public class Crosshair2 : MonoBehaviour
     Transform target;
     Main_Duck duck;
     GameObject aiDuck;
+    GameObject Tgt;
     public GameObject GunShot;
     // Start is called before the first frame update
     void Start()
     {
+        Tgt = GameObject.FindGameObjectWithTag("TargetManager");
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         StartCoroutine(changeOffset());
@@ -73,6 +75,7 @@ public class Crosshair2 : MonoBehaviour
     bool shooting;
     bool onDuck;
     bool onbBgDuck;
+    bool onTarget;
     private void OnTriggerStay2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
@@ -98,6 +101,17 @@ public class Crosshair2 : MonoBehaviour
                 shooting = true;
             }
         }
+        else if (col.CompareTag("target"))
+        {
+            onTarget = true;
+            if (ready_to_shoot)
+            {
+                rb.velocity = Vector2.zero;
+                Invoke("shoot", Shoot_Time);
+                ready_to_shoot = false;
+                shooting = true;
+            }
+        }
     }
     private void OnTriggerExit2D(Collider2D col)
     {
@@ -105,6 +119,10 @@ public class Crosshair2 : MonoBehaviour
         if (col.CompareTag("bgDuck"))
         {
             onbBgDuck = false;
+        }
+        if (col.CompareTag("target"))
+        {
+            onTarget = false;
         }
     }
     void shoot()
@@ -121,6 +139,15 @@ public class Crosshair2 : MonoBehaviour
                 AIDuckShot s = aiDuck.GetComponent<AIDuckShot>();
                 if (s != null)
                     s.Shot();
+            }
+        }
+        else if (onTarget)
+        {
+            if(Tgt != null)
+            {
+                TargetManager t = Tgt.GetComponent<TargetManager>();
+                if (t != null)
+                    t.Shot();
             }
         }
         else Instantiate(GunShot, transform.position, Quaternion.identity);

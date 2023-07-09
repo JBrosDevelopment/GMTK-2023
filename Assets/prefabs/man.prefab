@@ -88,7 +88,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &1169693207070494785
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,14 +105,12 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6787861629485583890
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
     m_TransformParent: {fileID: 4513643040063983439}
     m_Modifications:
     - target: {fileID: 86387730937352812, guid: 11b126161c926fb4eb0e00d02fcc201b, type: 3}
@@ -164,13 +162,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8042283152145434747, guid: 11b126161c926fb4eb0e00d02fcc201b, type: 3}
+      propertyPath: Tgt
+      value: 
+      objectReference: {fileID: 2499789862973302712, guid: 1864a96fab1e43740bf394c3db5d11c7, type: 3}
+    - target: {fileID: 8042283152145434747, guid: 11b126161c926fb4eb0e00d02fcc201b, type: 3}
       propertyPath: man
       value: 
       objectReference: {fileID: 1169693207070494785}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11b126161c926fb4eb0e00d02fcc201b, type: 3}
 --- !u!4 &741599520714740322 stripped
 Transform:
