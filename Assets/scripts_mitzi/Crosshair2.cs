@@ -10,9 +10,7 @@ public class Crosshair2 : MonoBehaviour
     public float Accuracy = 100;
     public float Shoot_Time = 1f;
     public Animator man;
-    SpriteRenderer render;
-    public Sprite big;
-    public Sprite small;
+    Animator animator;
     public SFXController sfx;
     Vector3 offset = new Vector2();
     Rigidbody2D rb;
@@ -24,7 +22,7 @@ public class Crosshair2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        render = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         Tgt = GameObject.FindGameObjectWithTag("TargetManager");
         rb = GetComponent<Rigidbody2D>();
         StartCoroutine(changeOffset());
@@ -70,7 +68,7 @@ public class Crosshair2 : MonoBehaviour
     {
         yield return new WaitForSeconds(time_between_shots);
         //animation
-        render.sprite = small;
+        animator.Play("Reload", 0, 0f);
         sfx.Play("reload");
         yield return new WaitForSeconds(1);
         ready_to_shoot = true;
@@ -133,7 +131,7 @@ public class Crosshair2 : MonoBehaviour
     {
         //play gun sound
         sfx.Play("shoot");
-        render.sprite = big;
+        animator.Play("Shoot", 0, 0f);
         if (onDuck && !onbBgDuck)
             duck.Death();
         else if (onbBgDuck)

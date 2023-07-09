@@ -109,8 +109,9 @@ public class Main_Duck : MonoBehaviour
         rb.drag = 0;
         sfx.Play("death");
         GameObject go = GameObject.FindGameObjectWithTag("RoundManager");
-        go.GetComponent<RoundManger>().Restart();
+        go.GetComponent<RoundManger>().Lost();
         rb.constraints = RigidbodyConstraints2D.None;
+        GetComponent<Collider2D>().enabled = false;
         rb.angularVelocity = 20;
         collider_.enabled = false;
         anim.SetBool("dead", true);

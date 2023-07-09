@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6087148045784538224}
   - component: {fileID: 5424115700410913060}
   - component: {fileID: 8042283152145434747}
+  - component: {fileID: -3263279482267544694}
   - component: {fileID: 8266591070949784150}
   - component: {fileID: 3380191005364592704}
   - component: {fileID: 5229711751863238957}
@@ -106,16 +107,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3b7a66790eceb4091e10078245c144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 1
-  time_between_shots: 1.5
+  acceleration: 1.19
+  time_between_shots: 1.11
   random_offest_number: 0.1
   Accuracy: 100
   Shoot_Time: 1
   man: {fileID: 0}
-  big: {fileID: -499972960, guid: d020914faf4bdcd40802cf2fb4d446b1, type: 3}
-  small: {fileID: -1187848423, guid: d020914faf4bdcd40802cf2fb4d446b1, type: 3}
   sfx: {fileID: 5229711751863238957}
   GunShot: {fileID: 1821185596157635483, guid: b1e8249d33771e34dbbea430152c0feb, type: 3}
+--- !u!95 &-3263279482267544694
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86387730937352812}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ade413faace66bb428843d56b78195ee, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &8266591070949784150
 Rigidbody2D:
   serializedVersion: 4
@@ -133,12 +152,6 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -153,25 +166,6 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
